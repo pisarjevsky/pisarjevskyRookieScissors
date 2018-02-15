@@ -8,11 +8,6 @@ $info = ['pisarjevskyRookieScissors' => 'Добавить Laravel',
     'Фотоаппарат polaroid 6302' => '6000 грн',
     'Sony смартфон' => '30000 грн'];
 echo '
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lab1 KPZ Demchenko 121-16-1</title>
-
     <meta charset="utf - 8">
     <meta name="viewport" content="width = device - width, initial - scale = 1, shrink - to - fit = no">
     <meta http-equiv="x - ua - compatible" content="ie = edge">
