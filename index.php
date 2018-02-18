@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ДемченкоМаксимАндрій
+ * Date: 18.02.2018
+ * Time: 21:12
+ */
+require 'content.php';
+echo '<!DOCTYPE html>
 <html>
 <head>
     <title>pisarjesvkyRookieScissors</title>
@@ -20,34 +28,26 @@
     <thead>
     <tr>
         <th>Ссылка на раздел</th>
-        <th>Статус</th>
+        <th>Файлов</th>
+        <th>Изменено</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><a href="kpz/laba1">Конструирование ПО</a></td>
-        <td>Выставить первую лабу, вторая - модульное тестирование сделать</td>
-    </tr>
-    <tr>
-        <td>Світова культура</td>
-        <td>@TODO Семінар 3 найти людей на еще двух мужиков из темы №1</td>
-    </tr>
-    <tr>
-        <td>Английский</td>
-        <td>Первый урок по Андроид книге</td>
-    </tr>
-    <tr>
-        <td>Теорія Ймовірності</td>
-        <td>Задача в тетради по польскому</td>
-    </tr>
-    <tr>
-        <td>Спорт</td>
-        <td>Общие упражнения 2 день</td>
-    </tr>
-    <tr>
-        <td><a href="aims">Цели</a></td>
-        <td>Текущая: вставить лару на этот ресурс</td>
-    </tr>
+    ';
+foreach ($nameToDirName as $node) {
+    $dir = strtolower($node);
+    if (!file_exists(strtolower($node)) && !is_dir(strtolower($node))) {
+        mkdir($dir);
+    }
+    $files = scandir($dir, 1);
+    $lastFile = reset($files);
+
+    echo '<tr><td><a href="' . $dir . '">' . $node . '</a></td>';
+    $status = (count($files) > 1) ? count($files) - 1 : 0;
+    echo '<td>' . --$status . ' элементов</td>';
+    echo '<td>' . date("H:i:s d/m/Y ", filemtime($dir)) . '</td></tr>';
+}
+echo '
     </tbody>
 </table>
 
@@ -62,4 +62,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script src="main.js"></script>
 </body>
-</html>
+</html>';
